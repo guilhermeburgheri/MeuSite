@@ -98,7 +98,7 @@ const dados = {
 
 // Componentes 
 const Container = ({ children }) => (
-  <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">{children}</div>
+  <div className="w-full px-4 sm:px-6 lg:px-8">{children}</div>
 );
 
 const Header = () => {

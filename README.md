@@ -12,7 +12,6 @@ O objetivo é apresentar minhas experiências, projetos, habilidades e informaç
 - **Lista de projetos** com carrossel interativo.
 - **Galeria de habilidades** com ícones clicáveis.
 - **Design responsivo** adaptado para desktop e mobile.
-- **Tema claro/escuro** com cores suaves.
 
 ---
 
