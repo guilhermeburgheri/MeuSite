@@ -74,21 +74,9 @@ const dados = {
     },
   ],
   habilidades: [
-    {
-      nome: "React",
-      imagem: "/icons/react-icon.png",
-      link: "https://reactjs.org",
-    },
-    {
-      nome: "JavaScript",
-      imagem: "/icons/js-icon.png",
-      link: "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript",
-    },
-    {
-      nome: "TypeScript",
-      imagem: "/icons/ts-icon.png",
-      link: "https://www.typescriptlang.org",
-    },
+    { nome: "React", imagem: "/icons/react-icon.png", link: "https://reactjs.org" },
+    { nome: "JavaScript", imagem: "/icons/js-icon.png", link: "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript" },
+    { nome: "TypeScript", imagem: "/icons/ts-icon.png", link: "https://www.typescriptlang.org" },
     { nome: "CSS", imagem: "/icons/css-icon.png", link: "https://developer.mozilla.org/pt-BR/docs/Web/CSS" },
     { nome: "Next.js", imagem: "/icons/nextjs-icon.png", link: "https://nextjs.org" },
     { nome: "Node.js", imagem: "/icons/nodejs-icon.png", link: "https://nodejs.org" },
