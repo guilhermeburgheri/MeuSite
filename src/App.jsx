@@ -52,13 +52,22 @@ const dados = {
   ],
   projetos: [
     {
-      titulo: "Projeto 1",
-      imagem: "/projects/projeto1.png",
-      descricao:
-        "Aplicação full stack com autenticação e dashboard. (Exemplo — substitua pela sua imagem e descrição)",
-      link: "#",
+      titulo: "Projeto Pizzas",
+      imagens: [
+        "/projects/Pizza1.png",
+        "/projects/Pizza2.png",
+        "/projects/Pizza3.png",
+        "/projects/Pizza4.png",
+        "/projects/Pizza5.png",
+        "/projects/Pizza6.png",
+        "/projects/Pizza7.png",
+        "/projects/Pizza8.png",
+        "/projects/Pizza9.png",
+        "/projects/Pizza10.png",
+      ],
+      descricao: "Projeto real para uma pizzaria local, com sistema de pedidos e painel administrativo. Tecnologias: React, Node.js, Express e SQLite3.",
     },
-    {
+    /*{
       titulo: "Projeto 2",
       imagem: "/projects/projeto2.png",
       descricao:
@@ -71,7 +80,7 @@ const dados = {
       descricao:
         "Jogo Web com Canvas/Three.js. (Exemplo)",
       link: "#",
-    },
+    }, */
   ],
   habilidades: [
     { nome: "React", imagem: "/icons/react-icon.png", link: "https://reactjs.org" },
@@ -234,46 +243,96 @@ const PagExperiencia = () => (
   </main>
 );
 
-const Carousel = ({ itens }) => {
+const Carousel = ({ projeto }) => {
+  const imagens = Array.isArray(projeto?.imagens)
+    ? projeto.imagens
+    : projeto?.imagem
+    ? [projeto.imagem]
+    : [];
+
+  if (!imagens.length) {
+    return (
+      <div className="text-sm text-neutral-500">
+        Nenhuma imagem encontrada para “{projeto?.titulo ?? 'Projeto'}”.
+      </div>
+    );
+  }
+
+  const { titulo, descricao, link } = projeto;
   const [idx, setIdx] = React.useState(0);
-  const next = () => setIdx((p) => (p + 1) % itens.length);
-  const prev = () => setIdx((p) => (p - 1 + itens.length) % itens.length);
-  const atual = itens[idx];
+  const next = () => setIdx((p) => (p + 1) % imagens.length);
+  const prev = () => setIdx((p) => (p - 1 + imagens.length) % imagens.length);
+
   return (
     <div className="relative">
+      <div className="mb-4 text-center">
+        <h4 className="text-lg font-semibold">{titulo}</h4>
+      </div>
+
       <div className="overflow-hidden rounded-2xl border border-neutral-200 dark:border-neutral-800">
         <motion.img
-          key={atual.imagem}
-          src={atual.imagem}
-          alt={atual.titulo}
-          className="w-full h-80 object-cover"
+          key={imagens[idx]}
+          src={imagens[idx]}
+          alt={`${titulo ?? 'Projeto'} - imagem ${idx + 1}`}
+          className="w-full max-h-96 object-contain rounded-lg"
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.3 }}
         />
       </div>
-      <div className="mt-4 flex items-center justify-between">
-        <button onClick={prev} className="px-4 py-2 rounded-xl bg-neutral-100 dark:bg-neutral-800 hover:opacity-90">Anterior</button>
-        <div className="text-center">
-          <h4 className="font-semibold">{atual.titulo}</h4>
-          <p className="text-sm text-neutral-600 dark:text-neutral-400 max-w-xl">{atual.descricao}</p>
-          {atual.link && (
-            <a href={atual.link} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-sm mt-2 hover:underline">
-              Ver projeto <ExternalLink size={14} />
-            </a>
-          )}
-        </div>
-        <button onClick={next} className="px-4 py-2 rounded-xl bg-neutral-100 dark:bg-neutral-800 hover:opacity-90">Próximo</button>
-      </div>
-      <div className="mt-2 flex justify-center gap-2">
-        {itens.map((_, i) => (
+
+      <div className="mt-4 flex flex-col items-center gap-4">
+        {descricao && (
+          <p className="text-sm text-neutral-600 dark:text-neutral-400 max-w-xl text-center">
+            {descricao}
+          </p>
+        )}
+
+        {link && (
+          <a
+            href={link}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-1 text-sm hover:underline"
+          >
+            Ver projeto <ExternalLink size={14} />
+          </a>
+        )}
+
+        <div className="flex items-center justify-between w-full">
           <button
-            key={i}
-            onClick={() => setIdx(i)}
-            aria-label={`Ir para slide ${i + 1}`}
-            className={`h-2 w-2 rounded-full ${i === idx ? "bg-neutral-900 dark:bg-white" : "bg-neutral-300 dark:bg-neutral-700"}`}
-          />
-        ))}
+            onClick={prev}
+            className="px-4 py-2 rounded-xl bg-neutral-100 dark:bg-neutral-800 hover:opacity-90"
+          >
+            Anterior
+          </button>
+
+          <p className="text-xs text-neutral-500">
+            {idx + 1} / {imagens.length}
+          </p>
+
+          <button
+            onClick={next}
+            className="px-4 py-2 rounded-xl bg-neutral-100 dark:bg-neutral-800 hover:opacity-90"
+          >
+            Próximo
+          </button>
+        </div>
+
+        <div className="flex justify-center gap-2">
+          {imagens.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setIdx(i)}
+              aria-label={`Ir para slide ${i + 1}`}
+              className={`h-2 w-2 rounded-full ${
+                i === idx
+                  ? "bg-neutral-900 dark:bg-white"
+                  : "bg-neutral-300 dark:bg-neutral-700"
+              }`}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -284,9 +343,14 @@ const PagProjetos = () => (
     <Container>
       <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
         <h2 className="text-2xl font-semibold mb-6">Projetos</h2>
-        <Card className="p-6">
-          <Carousel itens={dados.projetos} />
-        </Card>
+
+        <div className="grid gap-6">
+          {dados.projetos.map((p, i) => (
+            <Card key={i} className="p-6">
+              <Carousel projeto={p} />
+            </Card>
+          ))}
+        </div>
       </motion.div>
     </Container>
   </main>
