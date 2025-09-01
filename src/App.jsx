@@ -95,34 +95,68 @@ const dados = {
 
 // Componentes 
 const Container = ({ children }) => (
-  <div className="w-full px-4 sm:px-6 lg:px-8">{children}</div>
+  <div className="mx-auto max-w-7xl w-full px-4 sm:px-6 lg:px-8">{children}</div>
 );
 
 const Header = () => {
-  const linkBase =
-    "px-4 py-2 rounded-xl text-sm font-medium transition hover:opacity-90";
+  const [aberto, setAberto] = React.useState(false);
+
+  const linkItem =
+    "px-3 py-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800";
+    
+  React.useEffect(() => {
+    const close = () => setAberto(false);
+    window.addEventListener("popstate", close);
+    return () => window.removeEventListener("popstate", close);
+  }, []);
+
   return (
     <header className="sticky top-0 z-40 backdrop-blur bg-white/70 dark:bg-neutral-900/70 border-b border-neutral-200 dark:border-neutral-800">
       <Container>
-        <nav className="flex items-center justify-between py-3">
-          <NavLink to="/" className="flex items-center gap-3">
+        <nav className="relative flex items-center justify-between gap-3 py-3">
+          <NavLink
+            to="/"
+            className="flex items-center gap-3 flex-1 min-w-0"
+            onClick={() => setAberto(false)}
+          >
             <img
               src={dados.foto}
               alt="Foto de perfil"
-              className="h-10 w-10 rounded-full object-cover ring-2 ring-neutral-200"
+              className="h-10 w-10 rounded-full object-cover ring-2 ring-neutral-200 shrink-0"
             />
-            <div>
+            <div className="min-w-0">
               <p className="text-sm text-neutral-500">{dados.cargo}</p>
-              <h1 className="text-lg font-semibold">{dados.nome}</h1>
+              <h1 className="text-base sm:text-lg font-semibold leading-tight break-normal whitespace-normal">{dados.nome}</h1>
             </div>
           </NavLink>
 
-          <div className="hidden md:flex items-center gap-2">
-            <NavLink to="/" className={({ isActive }) => `${linkBase} ${isActive ? "bg-neutral-900 text-white" : "bg-neutral-100 dark:bg-neutral-800"}`}>Home</NavLink>
-            <NavLink to="/experiencia" className={({ isActive }) => `${linkBase} ${isActive ? "bg-neutral-900 text-white" : "bg-neutral-100 dark:bg-neutral-800"}`}>Experiências</NavLink>
-            <NavLink to="/projetos" className={({ isActive }) => `${linkBase} ${isActive ? "bg-neutral-900 text-white" : "bg-neutral-100 dark:bg-neutral-800"}`}>Projetos</NavLink>
-            <NavLink to="/habilidades" className={({ isActive }) => `${linkBase} ${isActive ? "bg-neutral-900 text-white" : "bg-neutral-100 dark:bg-neutral-800"}`}>Habilidades</NavLink>
-          </div>
+          <button
+            type="button"
+            aria-label={aberto ? "Fechar menu" : "Abrir menu"}
+            aria-expanded={aberto}
+            className="inline-flex items-center justify-center rounded-xl border border-neutral-200 dark:border-neutral-800 px-3 py-2 bg-white/70 dark:bg-neutral-900/70 shrink-0"
+            onClick={() => setAberto(a => !a)}
+          >
+            {aberto ? (
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M6.225 4.811 4.81 6.225 10.586 12l-5.775 5.775 1.414 1.414L12 13.414l5.775 5.775 1.414-1.414L13.414 12l5.775-5.775-1.414-1.414L12 10.586 6.225 4.811Z" /></svg>
+            ) : (
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M3 6h18v2H3V6Zm0 5h18v2H3v-2Zm0 5h18v2H3v-2Z" /></svg>
+            )}
+          </button>
+
+          {aberto && (
+            <div
+              className="absolute left-0 right-0 top-full mt-2 mx-0 sm:mx-4 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 shadow-lg p-2"
+              role="menu"
+            >
+              <div className="flex flex-col">
+                <NavLink to="/" onClick={() => setAberto(false)} className={linkItem}>Home</NavLink>
+                <NavLink to="/experiencia" onClick={() => setAberto(false)} className={linkItem}>Experiências</NavLink>
+                <NavLink to="/projetos" onClick={() => setAberto(false)} className={linkItem}>Projetos</NavLink>
+                <NavLink to="/habilidades" onClick={() => setAberto(false)} className={linkItem}>Habilidades</NavLink>
+              </div>
+            </div>
+          )}
         </nav>
       </Container>
     </header>
@@ -140,7 +174,7 @@ const Footer = () => (
 );
 
 const Card = ({ children, className = "" }) => (
-  <div className={`rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 shadow-sm ${className}`}>
+  <div className={`rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 shadow-sm overflow-hidden ${className}`}>
     {children}
   </div>
 );
@@ -156,17 +190,19 @@ const PagHome = () => (
               <img
                 src={dados.foto}
                 alt="Foto de perfil"
-                className="w-50 h-50 object-cover rounded-lg ring-2 ring-neutral-200"
+                className="w-24 h-24 md:w-40 md:h-40 object-cover rounded-lg ring-2 ring-neutral-200"
               />
               <div>
                 <h2 className="text-xl font-semibold">{dados.nome}</h2>
                 <p className="text-neutral-600 dark:text-neutral-400">{dados.cargo}</p>
                 <div className="mt-3 space-y-1 text-sm">
                   <a
-                    className="flex items-center gap-2 hover:underline"
+                    className="flex items-center gap-2 hover:underline text-sm max-w-full overflow-hidden"
                     href={`mailto:${dados.contato.email}`}
+                    title={dados.contato.email}
                   >
-                    <Mail size={16} /> {dados.contato.email}
+                    <Mail size={16} />
+                    <span className="break-all">{dados.contato.email}</span>
                   </a>
                   <p className="flex items-center gap-2">
                     <Phone size={16} /> {dados.contato.telefone}
@@ -247,8 +283,8 @@ const Carousel = ({ projeto }) => {
   const imagens = Array.isArray(projeto?.imagens)
     ? projeto.imagens
     : projeto?.imagem
-    ? [projeto.imagem]
-    : [];
+      ? [projeto.imagem]
+      : [];
 
   if (!imagens.length) {
     return (
@@ -269,12 +305,12 @@ const Carousel = ({ projeto }) => {
         <h4 className="text-lg font-semibold">{titulo}</h4>
       </div>
 
-      <div className="overflow-hidden rounded-2xl border border-neutral-200 dark:border-neutral-800">
+      <div className="w-full overflow-hidden rounded-2xl border border-neutral-200 dark:border-neutral-800">
         <motion.img
           key={imagens[idx]}
           src={imagens[idx]}
           alt={`${titulo ?? 'Projeto'} - imagem ${idx + 1}`}
-          className="w-full max-h-96 object-contain rounded-lg"
+          className="block w-full max-w-full h-auto object-contain"
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.3 }}
@@ -325,11 +361,10 @@ const Carousel = ({ projeto }) => {
               key={i}
               onClick={() => setIdx(i)}
               aria-label={`Ir para slide ${i + 1}`}
-              className={`h-2 w-2 rounded-full ${
-                i === idx
-                  ? "bg-neutral-900 dark:bg-white"
-                  : "bg-neutral-300 dark:bg-neutral-700"
-              }`}
+              className={`h-2 w-2 rounded-full ${i === idx
+                ? "bg-neutral-900 dark:bg-white"
+                : "bg-neutral-300 dark:bg-neutral-700"
+                }`}
             />
           ))}
         </div>
@@ -391,7 +426,7 @@ const PagHabilidades = () => (
 export default function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-neutral-50 dark:bg-neutral-950 text-neutral-900 dark:text-neutral-50">
+      <div className="min-h-screen overflow-x-hidden bg-neutral-50 dark:bg-neutral-950 text-neutral-900 dark:text-neutral-50">
         <Header />
         <Routes>
           <Route path="/" element={<PagHome />} />
