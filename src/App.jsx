@@ -103,7 +103,7 @@ const Header = () => {
 
   const linkItem =
     "px-3 py-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800";
-    
+
   React.useEffect(() => {
     const close = () => setAberto(false);
     window.addEventListener("popstate", close);
@@ -119,11 +119,6 @@ const Header = () => {
             className="flex items-center gap-3 flex-1 min-w-0"
             onClick={() => setAberto(false)}
           >
-            <img
-              src={dados.foto}
-              alt="Foto de perfil"
-              className="h-10 w-10 rounded-full object-cover ring-2 ring-neutral-200 shrink-0"
-            />
             <div className="min-w-0">
               <p className="text-sm text-neutral-500">{dados.cargo}</p>
               <h1 className="text-base sm:text-lg font-semibold leading-tight break-normal whitespace-normal">{dados.nome}</h1>
@@ -398,7 +393,10 @@ const SkillBubble = ({ nome, imagem, link }) => (
     rel="noreferrer"
     className="group flex flex-col items-center gap-3"
   >
-    <div className="h-24 w-24 rounded-full grid place-items-center shadow-sm border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 transition-transform group-hover:scale-105">
+    <div
+      className="h-24 w-24 rounded-full grid place-items-center shadow-sm border border-neutral-200 dark:border-neutral-800 transition-transform group-hover:scale-105"
+      style={{ backgroundColor: "#3f3f3fff" }}
+    >
       <img src={imagem} alt={nome} className="h-12 w-12 object-contain" />
     </div>
     <span className="text-sm font-medium">{nome}</span>

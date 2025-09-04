@@ -67,3 +67,10 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+@layer utilities {
+  /* Fundo cinza seguro p/ imagens com transparência */
+  .img-bg {
+    @apply bg-neutral-100 dark:bg-neutral-800;
+  }
+}
