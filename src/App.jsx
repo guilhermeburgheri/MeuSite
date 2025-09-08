@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, Phone, ExternalLink } from "lucide-react";
+import { Github, Linkedin, Mail, Phone, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 
 // Dados do portfólio
 const dados = {
@@ -54,31 +54,40 @@ const dados = {
     {
       titulo: "Projeto Pizzas",
       imagens: [
-        "/projects/Pizza1.png",
-        "/projects/Pizza2.png",
-        "/projects/Pizza3.png",
-        "/projects/Pizza4.png",
-        "/projects/Pizza5.png",
-        "/projects/Pizza6.png",
-        "/projects/Pizza7.png",
-        "/projects/Pizza8.png",
-        "/projects/Pizza9.png",
-        "/projects/Pizza10.png",
+        "/projects/Pizzaria/Pizza1.png",
+        "/projects/Pizzaria/Pizza2.png",
+        "/projects/Pizzaria/Pizza3.png",
+        "/projects/Pizzaria/Pizza4.png",
+        "/projects/Pizzaria/Pizza5.png",
+        "/projects/Pizzaria/Pizza6.png",
+        "/projects/Pizzaria/Pizza7.png",
+        "/projects/Pizzaria/Pizza8.png",
+        "/projects/Pizzaria/Pizza9.png",
+        "/projects/Pizzaria/Pizza10.png",
       ],
-      descricao: "Projeto real para uma pizzaria local, com sistema de pedidos e painel administrativo. Tecnologias: React, Node.js, Express e SQLite3.",
-    },
-    /*{
-      titulo: "Projeto 2",
-      imagem: "/projects/projeto2.png",
-      descricao:
-        "API Node.js com documentação OpenAPI e testes automatizados. (Exemplo)",
-      link: "#",
+      descricao: "Projeto real para uma pizzaria local, com sistema de pedidos e painel administrativo. Desenvolvido com as tecnologias: React, Node.js, Express e SQLite3.",
     },
     {
+      titulo: "Hackaton FIAP",
+      imagens: [
+        "/projects/Hackaton/Hackaton1.png",
+        "/projects/Hackaton/Hackaton2.png",
+        "/projects/Hackaton/Hackaton3.png",
+        "/projects/Hackaton/Hackaton4.png",
+        "/projects/Hackaton/Hackaton5.png",
+        "/projects/Hackaton/Hackaton6.png",
+        "/projects/Hackaton/Hackaton7.png",
+        "/projects/Hackaton/Hackaton8.png",
+      ],
+      descricao:
+        "Projeto final do Hackaton da FIAP, um sistema para auxiliar os alunos a encontrarem estágios e vagas de emprego. Desenvolvido com as tecnologias: React, Node.js, Typescript, Express, Postgres, Tailwind e Docker.",
+      link: "https://www.youtube.com/watch?v=M7BHiQPskoA",
+    },
+    /*{
       titulo: "Projeto 3",
       imagem: "/projects/projeto3.png",
       descricao:
-        "Jogo Web com Canvas/Three.js. (Exemplo)",
+        "",
       link: "#",
     }, */
   ],
@@ -300,7 +309,7 @@ const Carousel = ({ projeto }) => {
         <h4 className="text-lg font-semibold">{titulo}</h4>
       </div>
 
-      <div className="w-full overflow-hidden rounded-2xl border border-neutral-200 dark:border-neutral-800">
+      <div className="relative w-full overflow-hidden rounded-2xl border border-neutral-200 dark:border-neutral-800 group">
         <motion.img
           key={imagens[idx]}
           src={imagens[idx]}
@@ -310,6 +319,21 @@ const Carousel = ({ projeto }) => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.3 }}
         />
+        <button
+          onClick={prev}
+          aria-label="Imagem anterior"
+          className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-white/80 dark:bg-neutral-900/80 border border-neutral-200 dark:border-neutral-800 shadow p-2 opacity-0 group-hover:opacity-100 transition-opacity"
+        >
+          <ChevronLeft size={20} />
+        </button>
+
+        <button
+          onClick={next}
+          aria-label="Próxima imagem"
+          className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-white/80 dark:bg-neutral-900/80 border border-neutral-200 dark:border-neutral-800 shadow p-2 opacity-0 group-hover:opacity-100 transition-opacity"
+        >
+          <ChevronRight size={20} />
+        </button>
       </div>
 
       <div className="mt-4 flex flex-col items-center gap-4">
