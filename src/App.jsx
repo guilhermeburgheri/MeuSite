@@ -83,13 +83,19 @@ const dados = {
         "Projeto final do Hackaton da FIAP, um sistema para auxiliar os alunos a encontrarem estágios e vagas de emprego. Desenvolvido com as tecnologias: React, Node.js, Typescript, Express, Postgres, Tailwind e Docker.",
       link: "https://www.youtube.com/watch?v=M7BHiQPskoA",
     },
-    /*{
-      titulo: "Projeto 3",
-      imagem: "/projects/projeto3.png",
+    {
+      titulo: "Projeto ONG animais",
+      imagens: [
+        "/projects/ONG/ONG1.png",
+        "/projects/ONG/ONG2.png",
+        "/projects/ONG/ONG3.png",
+        "/projects/ONG/ONG4.png",
+        "/projects/ONG/ONG5.png",
+        "/projects/ONG/ONG6.png"
+      ],
       descricao:
-        "",
-      link: "#",
-    }, */
+        "Site para uma ONG na qual faz o resgate, tratamente e adoção de animais abandonados. Desenvolvido com as tecnologias: HTML, CSS e JavaScript.",
+    },
   ],
   habilidades: [
     { nome: "React", imagem: "/icons/react-icon.png", link: "https://reactjs.org" },
