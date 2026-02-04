@@ -68,6 +68,25 @@ const dados = {
       descricao: "Projeto real para uma pizzaria local, com sistema de pedidos e painel administrativo. Desenvolvido com as tecnologias: React, Node.js, Express e SQLite3.",
     },
     {
+      titulo: "Projeto Guarde dinheiro",
+      imagens: [
+        "/projects/GuardeDinheiro/GD1.png",
+        "/projects/GuardeDinheiro/GD2.png",
+        "/projects/GuardeDinheiro/GD12.png",
+        "/projects/GuardeDinheiro/GD3.png",
+        "/projects/GuardeDinheiro/GD4.png",
+        "/projects/GuardeDinheiro/GD5.png",
+        "/projects/GuardeDinheiro/GD6.png",
+        "/projects/GuardeDinheiro/GD7.png",
+        "/projects/GuardeDinheiro/GD8.png",
+        "/projects/GuardeDinheiro/GD9.png",
+        "/projects/GuardeDinheiro/GD10.png",
+        "/projects/GuardeDinheiro/GD11.png",
+      ],
+      descricao:
+        "Projeto pessoal desenvolvido para colocar em prática minhas habilidades. Se trata de um aplicativo de controle financeiro onde o usuário tem diversas opções",
+    },
+    {
       titulo: "Hackaton FIAP",
       imagens: [
         "/projects/Hackaton/Hackaton1.png",
