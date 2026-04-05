@@ -38,7 +38,7 @@ const dados = {
     {
       cargo: "Analista de Pós Venda I",
       empresa: "Empresa Teleperformance",
-      periodo: "Maio 2025 - Presente",
+      periodo: "Maio 2025 - Abril 2026",
       descricao:
         "Abertura de chamados para empresas nos cenários de Pós-venda, alinhamento do SLA para resolução do caso e preencher no sistema corretamente para os engenheiros/especialistas responsáveis seguirem com as tratativas.",
     },
