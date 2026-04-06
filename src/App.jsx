@@ -82,6 +82,9 @@ const dados = {
         "/projects/GuardeDinheiro/GD9.png",
         "/projects/GuardeDinheiro/GD10.png",
         "/projects/GuardeDinheiro/GD11.png",
+        "/projects/GuardeDinheiro/GD13.png",
+        "/projects/GuardeDinheiro/GD14.png",
+        "/projects/GuardeDinheiro/GD15.png",
       ],
       descricao:
         "Projeto pessoal desenvolvido para colocar em prática minhas habilidades. Se trata de um aplicativo de controle financeiro onde o usuário tem diversas opções",
