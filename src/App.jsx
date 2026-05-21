@@ -106,17 +106,35 @@ const dados = {
       link: "https://www.youtube.com/watch?v=M7BHiQPskoA",
     },
     {
-      titulo: "Projeto ONG animais",
+      titulo: "Projeto ONG animais FrontEnd",
       imagens: [
-        "/projects/ONG/ONG1.png",
-        "/projects/ONG/ONG2.png",
-        "/projects/ONG/ONG3.png",
-        "/projects/ONG/ONG4.png",
-        "/projects/ONG/ONG5.png",
-        "/projects/ONG/ONG6.png"
+        "/projects/ONG/Front/ONG1.png",
+        "/projects/ONG/Front/ONG2.png",
+        "/projects/ONG/Front/ONG3.png",
+        "/projects/ONG/Front/ONG4.png",
+        "/projects/ONG/Front/ONG5.png",
+        "/projects/ONG/Front/ONG6.png"
       ],
       descricao:
-        "Site para uma ONG na qual faz o resgate, tratamente e adoção de animais abandonados. Desenvolvido com as tecnologias: HTML, CSS e JavaScript.",
+        "Trabalho acadêmico desenvolvido com foco em Front-end. O projeto consiste em um site para uma ONG responsável pelo resgate, tratamento e adoção de animais abandonados. A aplicação foi criada priorizando a estrutura visual, navegação entre páginas e apresentação das informações ao usuário, utilizando HTML, CSS e JavaScript.",
+    },
+    {
+      titulo: "Projeto NomeDoProjeto - Back-end",
+      imagens: [
+        "/projects/ONG/Back/ONG1.png",
+        "/projects/ONG/Back/ONG2.png",
+        "/projects/ONG/Back/ONG3.png",
+        "/projects/ONG/Back/ONG4.png",
+        "/projects/ONG/Back/ONG5.png",
+        "/projects/ONG/Back/ONG6.png",
+        "/projects/ONG/Back/ONG7.png",
+        "/projects/ONG/Back/ONG8.png",
+        "/projects/ONG/Back/ONG9.png",
+        "/projects/ONG/Back/ONG10.png",
+        "/projects/ONG/Back/ONG11.png"
+      ],
+      descricao:
+        "Trabalho acadêmico desenvolvido com foco em Back-end utilizando PHP. Nesta etapa foram implementadas funcionalidades de cadastro, estruturação dos campos, tratamento das informações e organização da lógica responsável pelo processamento dos dados.",
     },
   ],
   habilidades: [
