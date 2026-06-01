@@ -50,7 +50,7 @@ const dados = {
         "Suporte técnico aos clientes nos cenários de Pós-venda, realização do acesso remoto para processos e comandos/scripts no CMD e realização de CBA para cenários mais complexos.",
     },
   ],
-  projetos: [
+  projetosAcademicos: [
     {
       titulo: "Projeto Pizzas",
       imagens: [
@@ -65,29 +65,7 @@ const dados = {
         "/projects/Pizzaria/Pizza9.png",
         "/projects/Pizzaria/Pizza10.png",
       ],
-      descricao: "Projeto real para uma pizzaria local, com sistema de pedidos e painel administrativo. Desenvolvido com as tecnologias: React, Node.js, Express e SQLite3.",
-    },
-    {
-      titulo: "Projeto Guarde dinheiro",
-      imagens: [
-        "/projects/GuardeDinheiro/GD1.png",
-        "/projects/GuardeDinheiro/GD2.png",
-        "/projects/GuardeDinheiro/GD12.png",
-        "/projects/GuardeDinheiro/GD3.png",
-        "/projects/GuardeDinheiro/GD4.png",
-        "/projects/GuardeDinheiro/GD5.png",
-        "/projects/GuardeDinheiro/GD6.png",
-        "/projects/GuardeDinheiro/GD7.png",
-        "/projects/GuardeDinheiro/GD8.png",
-        "/projects/GuardeDinheiro/GD9.png",
-        "/projects/GuardeDinheiro/GD10.png",
-        "/projects/GuardeDinheiro/GD11.png",
-        "/projects/GuardeDinheiro/GD13.png",
-        "/projects/GuardeDinheiro/GD14.png",
-        "/projects/GuardeDinheiro/GD15.png",
-      ],
-      descricao:
-        "Projeto pessoal desenvolvido para colocar em prática minhas habilidades. Se trata de um aplicativo de controle financeiro onde o usuário tem diversas opções",
+      descricao: "Projeto para uma pizzaria local, com sistema de pedidos e painel administrativo. Desenvolvido com as tecnologias: React, Node.js, Express e SQLite3.",
     },
     {
       titulo: "Hackaton FIAP",
@@ -119,7 +97,7 @@ const dados = {
         "Trabalho acadêmico desenvolvido com foco em Front-end. O projeto consiste em um site para uma ONG responsável pelo resgate, tratamento e adoção de animais abandonados. A aplicação foi criada priorizando a estrutura visual, navegação entre páginas e apresentação das informações ao usuário, utilizando HTML, CSS e JavaScript.",
     },
     {
-      titulo: "Projeto NomeDoProjeto - Back-end",
+      titulo: "Projeto ONG animais BackEnd",
       imagens: [
         "/projects/ONG/Back/ONG1.png",
         "/projects/ONG/Back/ONG2.png",
@@ -135,6 +113,40 @@ const dados = {
       ],
       descricao:
         "Trabalho acadêmico desenvolvido com foco em Back-end utilizando PHP. Nesta etapa foram implementadas funcionalidades de cadastro, estruturação dos campos, tratamento das informações e organização da lógica responsável pelo processamento dos dados.",
+    },
+  ],
+  projetosReais: [
+    {
+      titulo: "Entre redes e diagnósticos",
+      imagens: [
+        "/projects/EntreRedesEDiagnosticos/EntreRedes.png",
+        "/projects/EntreRedesEDiagnosticos/EntreRedes1.png"
+      ],
+      descricao: 
+        "Projeto acadêmico para o qual fui chamado para desenvolvimento do site. A proposta aborda a influência das redes sociais no autodiagnóstico e na forma como a Geração Z interpreta questões relacionadas à saúde mental.",
+      link: "https://autodiagnosticoonline.vercel.app/",
+    },
+    {
+      titulo: "Projeto Guarde dinheiro",
+      imagens: [
+        "/projects/GuardeDinheiro/GD1.png",
+        "/projects/GuardeDinheiro/GD2.png",
+        "/projects/GuardeDinheiro/GD12.png",
+        "/projects/GuardeDinheiro/GD3.png",
+        "/projects/GuardeDinheiro/GD4.png",
+        "/projects/GuardeDinheiro/GD5.png",
+        "/projects/GuardeDinheiro/GD6.png",
+        "/projects/GuardeDinheiro/GD7.png",
+        "/projects/GuardeDinheiro/GD8.png",
+        "/projects/GuardeDinheiro/GD9.png",
+        "/projects/GuardeDinheiro/GD10.png",
+        "/projects/GuardeDinheiro/GD11.png",
+        "/projects/GuardeDinheiro/GD13.png",
+        "/projects/GuardeDinheiro/GD14.png",
+        "/projects/GuardeDinheiro/GD15.png",
+      ],
+      descricao:
+        "Projeto pessoal desenvolvido para colocar em prática minhas habilidades. Se trata de um aplicativo de controle financeiro onde o usuário tem diversas opções.",
     },
   ],
   habilidades: [
@@ -195,14 +207,12 @@ const Header = () => {
           </button>
 
           {aberto && (
-            <div
-              className="absolute left-0 right-0 top-full mt-2 mx-0 sm:mx-4 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 shadow-lg p-2"
-              role="menu"
-            >
+            <div className="absolute left-0 right-0 top-full mt-2 mx-0 sm:mx-4 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 shadow-lg p-2" role="menu">
               <div className="flex flex-col">
                 <NavLink to="/" onClick={() => setAberto(false)} className={linkItem}>Home</NavLink>
                 <NavLink to="/experiencia" onClick={() => setAberto(false)} className={linkItem}>Experiências</NavLink>
-                <NavLink to="/projetos" onClick={() => setAberto(false)} className={linkItem}>Projetos</NavLink>
+                <NavLink to="/projetos-academicos" onClick={() => setAberto(false)} className={linkItem}>Projetos acadêmicos/estudo</NavLink>
+                <NavLink to="/projetos-reais" onClick={() => setAberto(false)} className={linkItem}>Projetos reais</NavLink>
                 <NavLink to="/habilidades" onClick={() => setAberto(false)} className={linkItem}>Habilidades</NavLink>
               </div>
             </div>
@@ -438,23 +448,58 @@ const Carousel = ({ projeto }) => {
   );
 };
 
-const PagProjetos = () => (
-  <main className="py-10">
-    <Container>
-      <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-        <h2 className="text-2xl font-semibold mb-6">Projetos</h2>
+const PagProjetos = ({ tipo }) => {
+  let projetos;
+  let titulo;
 
-        <div className="grid gap-6">
-          {dados.projetos.map((p, i) => (
-            <Card key={i} className="p-6">
-              <Carousel projeto={p} />
-            </Card>
-          ))}
-        </div>
-      </motion.div>
-    </Container>
-  </main>
-);
+  if (tipo === "academico") {
+    projetos = dados.projetosAcademicos;
+    titulo = "Projetos acadêmicos/estudo";
+  } else if (tipo === "real") {
+    projetos = dados.projetosReais;
+    titulo = "Projetos reais";
+  } else {
+    // Exibe ambos se nenhum tipo for passado
+    return (
+      <main className="py-10">
+        <Container>
+          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+            <h2 className="text-2xl font-semibold mb-6">Projetos acadêmicos/estudo</h2>
+            <div className="grid gap-6 mb-10">
+              {dados.projetosAcademicos.map((p, i) => (
+                <Card key={i} className="p-6"><Carousel projeto={p} /></Card>
+              ))}
+            </div>
+
+            <h2 className="text-2xl font-semibold mb-6">Projetos reais</h2>
+            <div className="grid gap-6">
+              {dados.projetosReais.map((p, i) => (
+                <Card key={i} className="p-6"><Carousel projeto={p} /></Card>
+              ))}
+            </div>
+          </motion.div>
+        </Container>
+      </main>
+    );
+  }
+
+  return (
+    <main className="py-10">
+      <Container>
+        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+          <h2 className="text-2xl font-semibold mb-6">{titulo}</h2>
+          <div className="grid gap-6">
+            {projetos.map((p, i) => (
+              <Card key={i} className="p-6">
+                <Carousel projeto={p} />
+              </Card>
+            ))}
+          </div>
+        </motion.div>
+      </Container>
+    </main>
+  );
+};
 
 const SkillBubble = ({ nome, imagem, link }) => (
   <a
@@ -500,6 +545,8 @@ export default function App() {
           <Route path="/" element={<PagHome />} />
           <Route path="/experiencia" element={<PagExperiencia />} />
           <Route path="/projetos" element={<PagProjetos />} />
+          <Route path="/projetos-academicos" element={<PagProjetos tipo="academico" />} />
+          <Route path="/projetos-reais" element={<PagProjetos tipo="real" />} />
           <Route path="/habilidades" element={<PagHabilidades />} />
         </Routes>
         <Footer />
