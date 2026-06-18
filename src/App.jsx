@@ -52,20 +52,19 @@ const dados = {
   ],
   projetosAcademicos: [
     {
-      titulo: "Projeto Pizzas",
+      titulo: "Bootcamp Sysmap",
       imagens: [
-        "/projects/Pizzaria/Pizza1.png",
-        "/projects/Pizzaria/Pizza2.png",
-        "/projects/Pizzaria/Pizza3.png",
-        "/projects/Pizzaria/Pizza4.png",
-        "/projects/Pizzaria/Pizza5.png",
-        "/projects/Pizzaria/Pizza6.png",
-        "/projects/Pizzaria/Pizza7.png",
-        "/projects/Pizzaria/Pizza8.png",
-        "/projects/Pizzaria/Pizza9.png",
-        "/projects/Pizzaria/Pizza10.png",
+        "/projects/Sysmap/Sysmap1.png",
+        "/projects/Sysmap/Sysmap2.png",
+        "/projects/Sysmap/Sysmap3.png",
+        "/projects/Sysmap/Sysmap4.png",
+        "/projects/Sysmap/Sysmap5.png",
+        "/projects/Sysmap/Sysmap6.png",
+        "/projects/Sysmap/Sysmap7.png",
+        "/projects/Sysmap/Sysmap8.png",
+        "/projects/Sysmap/Sysmap9.png"
       ],
-      descricao: "Projeto para uma pizzaria local, com sistema de pedidos e painel administrativo. Desenvolvido com as tecnologias: React, Node.js, Express e SQLite3.",
+      descricao: "Projeto realizado em um Bootcamp para o gerenciamento de usuários, atividades, inscrições, check-in, pontuação, níveis, conquistas e upload de imagens",
     },
     {
       titulo: "Hackaton FIAP",
@@ -114,8 +113,34 @@ const dados = {
       descricao:
         "Trabalho acadêmico desenvolvido com foco em Back-end utilizando PHP. Nesta etapa foram implementadas funcionalidades de cadastro, estruturação dos campos, tratamento das informações e organização da lógica responsável pelo processamento dos dados.",
     },
+    {
+      titulo: "Projeto Pizzaria",
+      imagens: [
+        "/projects/Pizzaria/Pizza1.png",
+        "/projects/Pizzaria/Pizza2.png",
+        "/projects/Pizzaria/Pizza3.png",
+        "/projects/Pizzaria/Pizza4.png",
+        "/projects/Pizzaria/Pizza5.png",
+        "/projects/Pizzaria/Pizza6.png",
+        "/projects/Pizzaria/Pizza7.png",
+        "/projects/Pizzaria/Pizza8.png",
+        "/projects/Pizzaria/Pizza9.png",
+        "/projects/Pizzaria/Pizza10.png",
+      ],
+      descricao: "Projeto para uma pizzaria local, com sistema de pedidos e painel administrativo. Desenvolvido com as tecnologias: React, Node.js, Express e SQLite3.",
+    },
   ],
   projetosReais: [
+    {
+      titulo: "Be Woman",
+      imagens: [
+        "/projects/BeWoman/BeW1.png",
+        "/projects/BeWoman/BeW2.png"
+      ],
+      descricao: 
+        "Site para microempreendedora do setor de varejo, utilizando HTML, CSS e JavaScript. Atuei na construção da interface, organização do conteúdo, responsividade e publicação do projeto online, com foco em melhorar a presença digital da loja e facilitar o contato com clientes.",
+      link: "https://bewoman.com.br/",
+    },
     {
       titulo: "Entre redes e diagnósticos",
       imagens: [
@@ -146,7 +171,7 @@ const dados = {
         "/projects/GuardeDinheiro/GD15.png",
       ],
       descricao:
-        "Projeto pessoal desenvolvido para colocar em prática minhas habilidades. Se trata de um aplicativo de controle financeiro onde o usuário tem diversas opções.",
+        "Projeto desenvolvido para colocar em prática minhas habilidades. Se trata de um aplicativo de controle financeiro onde o usuário consegue fazer todo o gerenciamento de seus gastos e investimentos em um só lugar.",
     },
   ],
   habilidades: [
