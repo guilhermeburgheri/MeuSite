@@ -15,6 +15,7 @@ const dados = {
     telefone: "(11) 99942-1659",
     linkedin: "https://www.linkedin.com/in/guilherme-burgheri/",
     github: "https://github.com/guilhermeburgheri",
+    sitesAplicativos: "https://canva.link/cde1l4pamhdhrju",
   },
   educacao: [
     {
@@ -137,7 +138,7 @@ const dados = {
         "/projects/BeWoman/BeW1.png",
         "/projects/BeWoman/BeW2.png"
       ],
-      descricao: 
+      descricao:
         "Site para microempreendedora do setor de varejo, utilizando HTML, CSS e JavaScript. Atuei na construção da interface, organização do conteúdo, responsividade e publicação do projeto online, com foco em melhorar a presença digital da loja e facilitar o contato com clientes.",
       link: "https://bewoman.com.br/",
     },
@@ -147,7 +148,7 @@ const dados = {
         "/projects/EntreRedesEDiagnosticos/EntreRedes.png",
         "/projects/EntreRedesEDiagnosticos/EntreRedes1.png"
       ],
-      descricao: 
+      descricao:
         "Projeto acadêmico para o qual fui chamado para desenvolvimento do site. A proposta aborda a influência das redes sociais no autodiagnóstico e na forma como a Geração Z interpreta questões relacionadas à saúde mental.",
       link: "https://autodiagnosticoonline.vercel.app/",
     },
@@ -252,7 +253,7 @@ const Footer = () => (
   <footer className="mt-16 border-t border-neutral-200 dark:border-neutral-800 py-8 text-center text-sm text-neutral-500">
     <Container>
       <p>
-        © {new Date().getFullYear()} {dados.nome}. Feito com React + Tailwind.
+        © {new Date().getFullYear()} {dados.nome}.
       </p>
     </Container>
   </footer>
@@ -308,6 +309,21 @@ const PagHome = () => (
                   >
                     <Github size={16} /> GitHub
                   </a>
+
+                  <p className="flex items-center gap-2">
+                    <ExternalLink size={16} />
+                    <span>
+                      Sites e aplicativos:{" "}
+                      <a
+                        href={dados.contato.sitesAplicativos}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="hover:underline font-semibold"
+                      >
+                        CLIQUE AQUI
+                      </a>
+                    </span>
+                  </p>
                 </div>
               </div>
             </div>
